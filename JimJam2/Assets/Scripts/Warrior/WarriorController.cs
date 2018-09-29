@@ -21,6 +21,10 @@ public class WarriorController : MonoBehaviour {
 	public float cutJumpHeight = 0.35f;
 	private float m_jumpPressedRemember;
 	private float m_groundedRemember;
+	
+	[Header("Attack Handling")]
+	public GameObject swooshObject;
+	public Vector2 attackKnockback = new Vector2(-5f, 5f);
 
 	// Private Variables for Internal Control
 	private bool m_isAlive;
@@ -42,6 +46,7 @@ public class WarriorController : MonoBehaviour {
 
 		Run();
 		Jump();	
+		ProcessAttack();
 		FlipSprite();
 		AnimationLogic();
 	}
@@ -79,6 +84,14 @@ public class WarriorController : MonoBehaviour {
 
 			m_rigidbody.velocity = new Vector2(m_rigidbody.velocity.x, jumpForce);
 			// jump sound here
+		}
+	}
+
+	void ProcessAttack() {
+		if(Input.GetKeyDown(KeyCode.O)) {
+			Instantiate(swooshObject, this.transform.position + ((Vector3.right * Mathf.Sign(transform.localScale.x)) / 1.5f), Quaternion.identity).GetComponent<SwooshScript>().FlipSwoosh(Mathf.Sign(transform.localScale.x));
+
+			m_rigidbody.velocity += new Vector2(attackKnockback.x * Mathf.Sign(transform.localScale.x), attackKnockback.y);
 		}
 	}
 
