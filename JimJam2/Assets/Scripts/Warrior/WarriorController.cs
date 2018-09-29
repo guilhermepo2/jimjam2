@@ -6,6 +6,7 @@ public class WarriorController : MonoBehaviour {
 
 	[Header("Audio Handling")]
 	public AudioClip jumpClip;
+	public AudioClip attackClip;
 	public AudioClip hitClip;
 	public AudioClip deathHitClip;
 
@@ -109,7 +110,7 @@ public class WarriorController : MonoBehaviour {
 
 			m_rigidbody.velocity = new Vector2(m_rigidbody.velocity.x, jumpForce);
 			m_canDoubleJump = true;
-			// jump sound here
+			if(jumpClip) SoundManager.instance.PlaySfx(jumpClip);
 		}
 	}
 
@@ -117,7 +118,7 @@ public class WarriorController : MonoBehaviour {
 		if(m_canDoubleJump && Input.GetButtonDown("Jump")) {
 			m_canDoubleJump = false;
 			m_rigidbody.velocity = new Vector2(m_rigidbody.velocity.x, jumpForce);
-			// jump sound here
+			if(jumpClip) SoundManager.instance.PlaySfx(jumpClip);
 		}
 	}
 
@@ -126,6 +127,7 @@ public class WarriorController : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.O) && m_attackDelayElapsed <= 0) {
 			m_attackDelayElapsed = attackDelay;
 
+			if(attackClip) SoundManager.instance.PlaySfx(attackClip);
 			Instantiate(swooshObject, this.transform.position + ((Vector3.right * Mathf.Sign(transform.localScale.x)) / 1.5f), Quaternion.identity).GetComponent<SwooshScript>().FlipSwoosh(Mathf.Sign(transform.localScale.x));
 
 			m_rigidbody.velocity += new Vector2(attackKnockback.x * Mathf.Sign(transform.localScale.x), attackKnockback.y);
@@ -172,6 +174,7 @@ public class WarriorController : MonoBehaviour {
 	}
 	void OnCollisionEnter2D(Collision2D other) {
 		if(other.gameObject.tag == "Enemy" && !m_isInvincible) {
+			if(hitClip) SoundManager.instance.PlaySfx(hitClip);
 			// Apply Knockback
 			m_damageKnockBack = new Vector2(Mathf.Sign(other.gameObject.transform.localScale.x) * damageKnockback.x, damageKnockback.y);
 			m_isInvincible = true;

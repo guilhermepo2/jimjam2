@@ -118,8 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a21b91f344846cf89e49407aebecd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpClip: {fileID: 0}
-  hitClip: {fileID: 0}
+  jumpClip: {fileID: 8300000, guid: 39fc33aa1810a423b85abd369c7db3a7, type: 3}
+  attackClip: {fileID: 0}
+  hitClip: {fileID: 8300000, guid: 386083f511fc24d5f9b3a84261d6aab9, type: 3}
   deathHitClip: {fileID: 0}
   maxPlayerVelocity: 5
   horizontalDamping: 0.5
@@ -130,9 +131,14 @@ MonoBehaviour:
   swooshObject: {fileID: 1736861368848704, guid: f2e68722d132e4e3f89ed5dbf5cd6f67,
     type: 2}
   attackKnockback: {x: -5, y: 5}
+  attackDelay: 0.25
   damageKnockback: {x: 10, y: 2}
   knockbackTime: 0.1
   invencibilityTime: 1
+  hasDoubleJump: 0
+  secondJumpForce: 15
+  hasAirDash: 0
+  airDashForce: {x: 5, y: 1}
 --- !u!212 &212228023156139074
 SpriteRenderer:
   m_ObjectHideFlags: 1
