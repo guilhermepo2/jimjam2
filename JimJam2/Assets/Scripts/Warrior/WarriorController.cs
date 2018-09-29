@@ -21,10 +21,14 @@ public class WarriorController : MonoBehaviour {
 	public float cutJumpHeight = 0.35f;
 	private float m_jumpPressedRemember;
 	private float m_groundedRemember;
+
 	
 	[Header("Attack Handling")]
 	public GameObject swooshObject;
 	public Vector2 attackKnockback = new Vector2(-5f, 5f);
+	public float attackDelay = 0.25f;
+	private float m_attackDelayElapsed;
+
 	[Header("Damage Handling")]
 	public Vector2 damageKnockback = new Vector2(10f, 2f);
 	public float knockbackTime = .1f;
@@ -96,7 +100,10 @@ public class WarriorController : MonoBehaviour {
 	}
 
 	void ProcessAttack() {
-		if(Input.GetKeyDown(KeyCode.O)) {
+		m_attackDelayElapsed -= Time.deltaTime;
+		if(Input.GetKeyDown(KeyCode.O) && m_attackDelayElapsed <= 0) {
+			m_attackDelayElapsed = attackDelay;
+			
 			Instantiate(swooshObject, this.transform.position + ((Vector3.right * Mathf.Sign(transform.localScale.x)) / 1.5f), Quaternion.identity).GetComponent<SwooshScript>().FlipSwoosh(Mathf.Sign(transform.localScale.x));
 
 			m_rigidbody.velocity += new Vector2(attackKnockback.x * Mathf.Sign(transform.localScale.x), attackKnockback.y);
