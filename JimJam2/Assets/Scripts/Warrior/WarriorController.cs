@@ -144,7 +144,7 @@ public class WarriorController : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other) {
 		if(other.gameObject.tag == "Enemy" && !m_isInvincible) {
 			// Apply Knockback
-			m_damageKnockBack = new Vector2(-Mathf.Sign(transform.localScale.x) * damageKnockback.x, damageKnockback.y);
+			m_damageKnockBack = new Vector2(Mathf.Sign(other.gameObject.transform.localScale.x) * damageKnockback.x, damageKnockback.y);
 			m_isInvincible = true;
 			StartCoroutine(EndKnockback());
 			StartCoroutine(EndInvincibility());

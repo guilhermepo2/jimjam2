@@ -25,7 +25,7 @@ public class SwooshScript : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D other) {
 		EnemyBehavior enemyBehavior = other.gameObject.GetComponent<EnemyBehavior>();
 		if(enemyBehavior) {
-			enemyBehavior.TakeDamage(1);
+			enemyBehavior.TakeDamage(1, Mathf.Sign(transform.localScale.x));
 		}
 	}
 

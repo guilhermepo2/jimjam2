@@ -68,10 +68,10 @@ public class EnemyBehavior : MonoBehaviour {
 		m_isInvincible = false;
 	}
 
-	public void TakeDamage(int damage) {
+	public void TakeDamage(int damage, float knockbackSign) {
 		if(m_isInvincible) return;
 
-		m_damageKnockBack = new Vector2(-Mathf.Sign(transform.localScale.x) * knockbackForce.x, knockbackForce.y);
+		m_damageKnockBack = new Vector2(knockbackSign * knockbackForce.x, knockbackForce.y);
 		StartCoroutine(EndKnockback());
 
 		m_isInvincible = true;
