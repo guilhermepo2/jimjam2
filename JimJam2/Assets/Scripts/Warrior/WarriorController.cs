@@ -124,7 +124,7 @@ public class WarriorController : MonoBehaviour {
 
 	void ProcessAttack() {
 		m_attackDelayElapsed -= Time.deltaTime;
-		if(Input.GetKeyDown(KeyCode.O) && m_attackDelayElapsed <= 0) {
+		if((Input.GetKeyDown(KeyCode.O) || Input.GetButtonDown("Attack")) && m_attackDelayElapsed <= 0) {
 			m_attackDelayElapsed = attackDelay;
 
 			if(attackClip) SoundManager.instance.PlaySfx(attackClip);
