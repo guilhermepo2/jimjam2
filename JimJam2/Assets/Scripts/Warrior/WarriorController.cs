@@ -35,6 +35,17 @@ public class WarriorController : MonoBehaviour {
 	public float invencibilityTime = 1f;
 	private bool m_isInvincible = false;
 	private Vector2 m_damageKnockBack = Vector2.zero;
+	
+	// Power Up Handlers
+	[Header("Power Up: Double Jump Handling")]
+	public bool hasDoubleJump;
+	public float secondJumpForce = 15f;
+	private bool m_canDoubleJump = false;
+
+	[Header("Power Up: Air Dash Handling")]
+	public bool hasAirDash;
+	public Vector2 airDashForce = new Vector2(5f, 1f);
+
 
 	// Private Variables for Internal Control
 	private bool m_isAlive;
@@ -57,6 +68,7 @@ public class WarriorController : MonoBehaviour {
 		if(!m_isAlive) return;
 
 		Run();
+		if(hasDoubleJump) DoubleJump();
 		Jump();	
 		ProcessAttack();
 		FlipSprite();
@@ -82,6 +94,7 @@ public class WarriorController : MonoBehaviour {
 
 		if(Input.GetButtonDown("Jump")) {
 			m_jumpPressedRemember = jumpPressedRememberTime;
+			m_canDoubleJump = false;
 		}
 
 		if(Input.GetButtonUp("Jump")) {
@@ -95,6 +108,15 @@ public class WarriorController : MonoBehaviour {
 			m_groundedRemember = 0;
 
 			m_rigidbody.velocity = new Vector2(m_rigidbody.velocity.x, jumpForce);
+			m_canDoubleJump = true;
+			// jump sound here
+		}
+	}
+
+	void DoubleJump() {
+		if(m_canDoubleJump && Input.GetButtonDown("Jump")) {
+			m_canDoubleJump = false;
+			m_rigidbody.velocity = new Vector2(m_rigidbody.velocity.x, jumpForce);
 			// jump sound here
 		}
 	}
@@ -103,7 +125,7 @@ public class WarriorController : MonoBehaviour {
 		m_attackDelayElapsed -= Time.deltaTime;
 		if(Input.GetKeyDown(KeyCode.O) && m_attackDelayElapsed <= 0) {
 			m_attackDelayElapsed = attackDelay;
-			
+
 			Instantiate(swooshObject, this.transform.position + ((Vector3.right * Mathf.Sign(transform.localScale.x)) / 1.5f), Quaternion.identity).GetComponent<SwooshScript>().FlipSwoosh(Mathf.Sign(transform.localScale.x));
 
 			m_rigidbody.velocity += new Vector2(attackKnockback.x * Mathf.Sign(transform.localScale.x), attackKnockback.y);
