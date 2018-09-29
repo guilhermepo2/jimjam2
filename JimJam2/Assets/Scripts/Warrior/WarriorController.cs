@@ -13,6 +13,7 @@ public class WarriorController : MonoBehaviour {
 	[Header("Movement Handling")]
 	public float maxPlayerVelocity = 5f;
 	public float horizontalDamping = 0.25f;
+	private float m_originalMaxVelocity;
 
 
 	[Header("Jumping Handling")]
@@ -45,7 +46,12 @@ public class WarriorController : MonoBehaviour {
 
 	[Header("Power Up: Air Dash Handling")]
 	public bool hasAirDash;
-	public Vector2 airDashForce = new Vector2(5f, 1f);
+	public float airDashForce = 12f;
+	public float dashGravity = 0.15f;
+	public float airDashTime = 0.5f;
+	public Color dashColor = new Color(228, 255, 0, 255);
+	private float m_originalGravity;
+	private bool m_canDash;
 
 
 	// Private Variables for Internal Control
@@ -62,6 +68,8 @@ public class WarriorController : MonoBehaviour {
 		m_animator = GetComponent<Animator>();
 		m_spriteRenderer = GetComponent<SpriteRenderer>();
 		m_isAlive = true;
+		m_originalGravity = m_rigidbody.gravityScale;
+		m_originalMaxVelocity = maxPlayerVelocity;
 		Time.timeScale = 1.0f;
 	}
 	
@@ -69,6 +77,7 @@ public class WarriorController : MonoBehaviour {
 		if(!m_isAlive) return;
 
 		Run();
+		if(hasAirDash) AirDash();
 		if(hasDoubleJump) DoubleJump();
 		Jump();	
 		ProcessAttack();
@@ -85,12 +94,45 @@ public class WarriorController : MonoBehaviour {
 		m_rigidbody.velocity = new Vector2(movement, m_rigidbody.velocity.y) + m_damageKnockBack;
 	}
 
+	private IEnumerator AirDashRoutine(float returnTime) {
+		m_rigidbody.gravityScale = dashGravity;
+		maxPlayerVelocity = airDashForce;
+		yield return new WaitForSeconds(returnTime);
+		m_rigidbody.gravityScale = m_originalGravity;
+		maxPlayerVelocity = m_originalMaxVelocity;
+	}
+
+	void AirDash() {
+
+		if(!m_canDash) return;
+
+		Debug.Log("Air Dash Vertical: " + Input.GetAxisRaw("Vertical"));
+
+		if(Input.GetKeyDown(KeyCode.I) || Input.GetButtonDown("Dash")) {
+			StartCoroutine(AirDashRoutine(airDashTime));
+			m_spriteRenderer.color = dashColor;
+			float dashHorizontalMovement = Input.GetAxisRaw("Horizontal");
+			float dashVerticalMovement = Input.GetAxisRaw("Vertical");
+
+			Debug.Log("Air Dash Horizontal: " + dashHorizontalMovement);
+			
+
+			if(dashHorizontalMovement == 0 && dashVerticalMovement == 0) {
+				dashHorizontalMovement = Mathf.Sign(transform.localScale.x);
+			}
+
+			m_rigidbody.velocity = new Vector2((airDashForce * 2f) * dashHorizontalMovement, (airDashForce / 2f) * dashVerticalMovement);
+			m_canDash = false;
+		}
+	}
+
 	void Jump() {
 		m_groundedRemember -= Time.fixedDeltaTime;
 		m_jumpPressedRemember -= Time.fixedDeltaTime;
 
 		if(m_feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
 			m_groundedRemember = groundedRememberTime;
+			m_spriteRenderer.color = Color.white;
 		}
 
 		if(Input.GetButtonDown("Jump")) {
@@ -110,6 +152,7 @@ public class WarriorController : MonoBehaviour {
 
 			m_rigidbody.velocity = new Vector2(m_rigidbody.velocity.x, jumpForce);
 			m_canDoubleJump = true;
+			m_canDash = true;
 			if(jumpClip) SoundManager.instance.PlaySfx(jumpClip);
 		}
 	}

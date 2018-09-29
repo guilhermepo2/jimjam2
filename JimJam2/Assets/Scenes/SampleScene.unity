@@ -1476,7 +1476,7 @@ Prefab:
     - target: {fileID: 114808703836513024, guid: 508322b741d3947d9b92fe74e3b4ec18,
         type: 2}
       propertyPath: hasDoubleJump
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114808703836513024, guid: 508322b741d3947d9b92fe74e3b4ec18,
         type: 2}
@@ -1487,6 +1487,36 @@ Prefab:
         type: 2}
       propertyPath: attackKnockback.y
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 212228023156139074, guid: 508322b741d3947d9b92fe74e3b4ec18,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212228023156139074, guid: 508322b741d3947d9b92fe74e3b4ec18,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212228023156139074, guid: 508322b741d3947d9b92fe74e3b4ec18,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808703836513024, guid: 508322b741d3947d9b92fe74e3b4ec18,
+        type: 2}
+      propertyPath: hasAirDash
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808703836513024, guid: 508322b741d3947d9b92fe74e3b4ec18,
+        type: 2}
+      propertyPath: airDashForce
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808703836513024, guid: 508322b741d3947d9b92fe74e3b4ec18,
+        type: 2}
+      propertyPath: airDashTime
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 508322b741d3947d9b92fe74e3b4ec18, type: 2}
