@@ -25,18 +25,26 @@ public class WarriorController : MonoBehaviour {
 	[Header("Attack Handling")]
 	public GameObject swooshObject;
 	public Vector2 attackKnockback = new Vector2(-5f, 5f);
+	[Header("Damage Handling")]
+	public Vector2 damageKnockback = new Vector2(10f, 2f);
+	public float knockbackTime = .1f;
+	public float invencibilityTime = 1f;
+	private bool m_isInvincible = false;
+	private Vector2 m_damageKnockBack = Vector2.zero;
 
 	// Private Variables for Internal Control
 	private bool m_isAlive;
 	private Rigidbody2D m_rigidbody;
 	private BoxCollider2D m_feetCollider;
 	private Animator m_animator;
+	private SpriteRenderer m_spriteRenderer;
 
 	
 	void Start () {
 		m_rigidbody = GetComponent<Rigidbody2D>();
 		m_feetCollider = GetComponent<BoxCollider2D>();
 		m_animator = GetComponent<Animator>();
+		m_spriteRenderer = GetComponent<SpriteRenderer>();
 		m_isAlive = true;
 		Time.timeScale = 1.0f;
 	}
@@ -57,7 +65,7 @@ public class WarriorController : MonoBehaviour {
 		movement *= Mathf.Pow(1f - horizontalDamping, Time.deltaTime * 10f);
 
 		movement = Mathf.Clamp(movement, -maxPlayerVelocity, maxPlayerVelocity);
-		m_rigidbody.velocity = new Vector2(movement, m_rigidbody.velocity.y);
+		m_rigidbody.velocity = new Vector2(movement, m_rigidbody.velocity.y) + m_damageKnockBack;
 	}
 
 	void Jump() {
@@ -113,5 +121,34 @@ public class WarriorController : MonoBehaviour {
 		}
 	}
 
+	// ==========================================================================================
+	// ==========================================================================================
+	// 	COLLISION EVENTS
+	// ==========================================================================================
+	// ==========================================================================================
+	private IEnumerator EndKnockback() {
+		yield return new WaitForSeconds(knockbackTime);
+		m_damageKnockBack = Vector2.zero;
+	}
+
+	private IEnumerator EndInvincibility() {
+		float timeElapsed = 0;
+		while(timeElapsed < invencibilityTime) {
+			m_spriteRenderer.enabled = !m_spriteRenderer.enabled;
+			timeElapsed += Time.deltaTime;
+			yield return null;
+		}
+		m_spriteRenderer.enabled = true;
+		m_isInvincible = false;
+	}
+	void OnCollisionEnter2D(Collision2D other) {
+		if(other.gameObject.tag == "Enemy" && !m_isInvincible) {
+			// Apply Knockback
+			m_damageKnockBack = new Vector2(-Mathf.Sign(transform.localScale.x) * damageKnockback.x, damageKnockback.y);
+			m_isInvincible = true;
+			StartCoroutine(EndKnockback());
+			StartCoroutine(EndInvincibility());
+		}
+	}
 
 }

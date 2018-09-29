@@ -22,5 +22,12 @@ public class SwooshScript : MonoBehaviour {
 		transform.localScale = new Vector3(sign * transform.localScale.x, transform.localScale.y, transform.localScale.z);
 	}
 
+	void OnTriggerStay2D(Collider2D other) {
+		EnemyBehavior enemyBehavior = other.gameObject.GetComponent<EnemyBehavior>();
+		if(enemyBehavior) {
+			enemyBehavior.TakeDamage(1);
+		}
+	}
+
 	
 }
