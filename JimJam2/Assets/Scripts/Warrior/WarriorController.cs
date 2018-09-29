@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class WarriorController : MonoBehaviour {
 
+	[Header("Animator Handling")]
+	public Animator noPieceAnimator;
+	public Animator onePieceAnimator;
+	public Animator trueWarriorAnimator;
+
 	[Header("Audio Handling")]
 	public AudioClip jumpClip;
 	public AudioClip attackClip;

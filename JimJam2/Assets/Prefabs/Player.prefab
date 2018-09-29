@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1230297540101184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.485, z: 0}
+  m_LocalPosition: {x: 0, y: -3.485, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -131,16 +131,16 @@ MonoBehaviour:
   swooshObject: {fileID: 1736861368848704, guid: f2e68722d132e4e3f89ed5dbf5cd6f67,
     type: 2}
   attackKnockback: {x: 0, y: 4}
-  attackDelay: 0.25
+  attackDelay: 0.15
   damageKnockback: {x: 10, y: 2}
   knockbackTime: 0.1
   invencibilityTime: 1
-  hasDoubleJump: 1
+  hasDoubleJump: 0
   secondJumpForce: 15
-  hasAirDash: 1
-  airDashForce: 12
+  hasAirDash: 0
+  airDashForce: 20
   dashGravity: 0.15
-  airDashTime: 0.5
+  airDashTime: 0.35
   dashColor: {r: 228, g: 255, b: 0, a: 255}
 --- !u!212 &212228023156139074
 SpriteRenderer:
