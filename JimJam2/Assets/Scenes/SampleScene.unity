@@ -1492,8 +1492,8 @@ MonoBehaviour:
   health: 2
   enemyVelocity: 3
   wallCheck: {fileID: 1242448202}
-  knockbackForce: {x: 10, y: 2}
-  knockbackTime: 0.1
+  knockbackForce: {x: 15, y: 0.5}
+  knockbackTime: 0.2
   invencibilityTime: 1
 --- !u!1001 &1354186973
 Prefab:

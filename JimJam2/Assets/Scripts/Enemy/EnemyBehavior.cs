@@ -8,7 +8,7 @@ public class EnemyBehavior : MonoBehaviour {
 	public float enemyVelocity = 3f;
 	public GameObject wallCheck;
 	public Vector2 knockbackForce = new Vector2(10f, 2f);
-	public float knockbackTime = 0.1f;
+	public float knockbackTime = 0.2f;
 	public float invencibilityTime = 1f;
 
 
