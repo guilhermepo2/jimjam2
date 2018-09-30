@@ -226,9 +226,11 @@ public class WarriorController : MonoBehaviour {
 		m_isInvincible = false;
 	}
 	void OnCollisionEnter2D(Collision2D other) {
-		if(other.gameObject.tag == "Enemy" && !m_isInvincible) {
+		if((other.gameObject.tag == "Enemy" || other.gameObject.tag == "Boss") && !m_isInvincible) {
 			if(hitClip) SoundManager.instance.PlaySfx(hitClip);
+			
 			// HEALTH HANDLING
+
 			m_currentLife--;
 			UserInterfaceManager.instance.RenderHealth(m_currentLife, maxLife);
 

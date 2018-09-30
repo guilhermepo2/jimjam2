@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UserInterfaceManager : MonoBehaviour {
 
@@ -17,10 +18,12 @@ public class UserInterfaceManager : MonoBehaviour {
 	[Header("Powers Panels")]
 	public GameObject couragePanel;
 	public GameObject wisdomPanel;
+	public GameObject powerPanel;
 	public Text bottomScreenText;
 
 	private bool m_waitingForInput = false;
 	private Queue<string> m_textQueue;
+	private bool m_gameOver = false;
 	
 	void Awake() {
 		if(instance == null) {
@@ -36,6 +39,7 @@ public class UserInterfaceManager : MonoBehaviour {
 	void DisableAllPanels() {
 		couragePanel.SetActive(false);
 		wisdomPanel.SetActive(false);
+		powerPanel.SetActive(false);
 	}
 
 	IEnumerator EndSentenceOnBottom() {
@@ -71,6 +75,10 @@ public class UserInterfaceManager : MonoBehaviour {
 
 				// show next bottom text
 				ShowBottomScreenText();
+
+				if(m_gameOver) {
+					// Load Final Scene
+				} 
 			}
 		}
 	}
@@ -91,14 +99,27 @@ public class UserInterfaceManager : MonoBehaviour {
 	}
 
 	public void ShowBottomText(string text) {
-		m_textQueue.Enqueue(text);
-		ShowBottomScreenText();
+		if(m_textQueue.Count > 0) {
+			m_textQueue.Enqueue(text);
+			ShowBottomScreenText();
+		}
 	}
 
 	public void ShowCombat() {
 		lifePanel.SetActive(true);
 		m_textQueue.Enqueue("Use O to attack");
 		ShowBottomScreenText();
+	}
+
+	public void GameOver() {
+		Debug.Log("Game Over!");
+		Time.timeScale = 0.15f;
+		powerPanel.SetActive(true);
+		m_waitingForInput = true;
+		m_gameOver = true;
+		
+		// Imply That The Cycle Begins Again
+		
 	}
 
 	public void RenderHealth(int currentLife, int maxLife) {

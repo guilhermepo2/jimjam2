@@ -9,30 +9,30 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1114672343970384}
+  m_RootGameObject: {fileID: 1216642083797262}
   m_IsPrefabAsset: 1
---- !u!1 &1114672343970384
+--- !u!1 &1216642083797262
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4982306804492358}
-  - component: {fileID: 114122119928684352}
+  - component: {fileID: 4324943513768982}
+  - component: {fileID: 114112422554723368}
   m_Layer: 0
-  m_Name: User Interface Manager
+  m_Name: Dialogue Trigger (Ending)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4982306804492358
+--- !u!4 &4324943513768982
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1114672343970384}
+  m_GameObject: {fileID: 1216642083797262}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,26 +40,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114122119928684352
+--- !u!114 &114112422554723368
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1114672343970384}
+  m_GameObject: {fileID: 1216642083797262}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fa90ce19398741489cf1ce510aa979d, type: 3}
+  m_Script: {fileID: 11500000, guid: d42bc31c1d610443f9e128ffb8b99821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifePanel: {fileID: 0}
-  hearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  fullHeart: {fileID: 21300006, guid: 749ab9dff11e44b579511bdf4cb02e79, type: 3}
-  halfHeart: {fileID: 21300010, guid: 749ab9dff11e44b579511bdf4cb02e79, type: 3}
-  emptyHeart: {fileID: 21300014, guid: 749ab9dff11e44b579511bdf4cb02e79, type: 3}
-  couragePanel: {fileID: 0}
-  wisdomPanel: {fileID: 0}
-  powerPanel: {fileID: 0}
-  bottomScreenText: {fileID: 0}
+  dialogues:
+  - {fileID: 11400000, guid: 3b5ea465550bc4f82b84e454aab4554f, type: 2}
