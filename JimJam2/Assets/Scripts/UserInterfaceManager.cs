@@ -72,6 +72,14 @@ public class UserInterfaceManager : MonoBehaviour {
 		Time.timeScale = 0;
 	}
 
+	public void ShowWisdom() {
+		wisdomPanel.SetActive(true);
+		m_waitingForInput = true;
+		m_textQueue.Enqueue("Press I to dash while on air");
+		m_textQueue.Enqueue("The dash follow the keys you are pressing");
+		Time.timeScale = 0;
+	}
+
 	public void ShowBottomText(string text) {
 		m_textQueue.Enqueue(text);
 		ShowBottomScreenText();

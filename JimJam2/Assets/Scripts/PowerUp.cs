@@ -31,8 +31,11 @@ public class PowerUp : MonoBehaviour {
 
 			if(isCourage) {
 				other.GetComponent<WarriorController>().hasDoubleJump = true;
-				// show courage panel
 				UserInterfaceManager.instance.ShowCourage();
+			} else if(isWisdom) {
+				other.GetComponent<WarriorController>().hasAirDash = true;
+				UserInterfaceManager.instance.ShowWisdom();
+
 			}
 
 			StartCoroutine(FadeOutRoutine());
