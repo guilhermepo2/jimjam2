@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class WarriorController : MonoBehaviour {
 
-	[Header("Animator Handling")]
+	[Header("Life Handling")]
+	public int maxLife = 6;
+	private int m_currentLife;
+	// [Header("Animator Handling")]
 	// public Animator noPieceAnimator;
 	// public Animator onePieceAnimator;
 	// public Animator trueWarriorAnimator;
@@ -75,6 +78,8 @@ public class WarriorController : MonoBehaviour {
 		m_isAlive = true;
 		m_originalGravity = m_rigidbody.gravityScale;
 		m_originalMaxVelocity = maxPlayerVelocity;
+		m_currentLife = maxLife;
+		UserInterfaceManager.instance.RenderHealth(m_currentLife, maxLife);
 		Time.timeScale = 1.0f;
 	}
 	
@@ -223,6 +228,14 @@ public class WarriorController : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other) {
 		if(other.gameObject.tag == "Enemy" && !m_isInvincible) {
 			if(hitClip) SoundManager.instance.PlaySfx(hitClip);
+			// HEALTH HANDLING
+			m_currentLife--;
+			UserInterfaceManager.instance.RenderHealth(m_currentLife, maxLife);
+
+			if(m_currentLife <= 0) {
+				Debug.Log("You DIED!");
+			}
+
 			// Apply Knockback
 			m_damageKnockBack = new Vector2(Mathf.Sign(other.gameObject.transform.localScale.x) * damageKnockback.x, damageKnockback.y);
 			m_isInvincible = true;

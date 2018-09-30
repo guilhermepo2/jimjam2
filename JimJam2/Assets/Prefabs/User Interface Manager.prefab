@@ -51,6 +51,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fa90ce19398741489cf1ce510aa979d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifePanel: {fileID: 0}
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fullHeart: {fileID: 21300006, guid: 749ab9dff11e44b579511bdf4cb02e79, type: 3}
+  halfHeart: {fileID: 21300010, guid: 749ab9dff11e44b579511bdf4cb02e79, type: 3}
+  emptyHeart: {fileID: 21300014, guid: 749ab9dff11e44b579511bdf4cb02e79, type: 3}
   couragePanel: {fileID: 0}
   wisdomPanel: {fileID: 0}
   bottomScreenText: {fileID: 0}

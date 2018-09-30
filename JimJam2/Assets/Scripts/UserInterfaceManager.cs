@@ -6,6 +6,14 @@ using UnityEngine.UI;
 public class UserInterfaceManager : MonoBehaviour {
 
 	public static UserInterfaceManager instance;
+	[Header("Player Health")]
+	public GameObject lifePanel;
+	public Image[] hearts;
+	public Sprite fullHeart;
+	public Sprite halfHeart;
+	public Sprite emptyHeart;
+
+
 	[Header("Powers Panels")]
 	public GameObject couragePanel;
 	public GameObject wisdomPanel;
@@ -21,6 +29,8 @@ public class UserInterfaceManager : MonoBehaviour {
 		} else {
 			Destroy(gameObject);
 		}
+
+		lifePanel.SetActive(false);
 	}
 
 	void DisableAllPanels() {
@@ -86,7 +96,29 @@ public class UserInterfaceManager : MonoBehaviour {
 	}
 
 	public void ShowCombat() {
+		lifePanel.SetActive(true);
 		m_textQueue.Enqueue("Use O to attack");
 		ShowBottomScreenText();
+	}
+
+	public void RenderHealth(int currentLife, int maxLife) {
+		int heartsToDisplay = (int)Mathf.Ceil(maxLife / 2);
+		int health = currentLife;
+
+		for(int i = 0; i < heartsToDisplay; i++) {
+			if(health >= 2) {
+				hearts[i].enabled = true;
+				hearts[i].sprite = fullHeart;
+				health -= 2;
+			} else if(health == 1) {
+				hearts[i].enabled = true;
+				hearts[i].sprite = halfHeart;
+				health--;
+			} else {
+				hearts[i].enabled = true;
+				hearts[i].sprite = emptyHeart;
+				health = 0;
+			}
+		}
 	}
 }
