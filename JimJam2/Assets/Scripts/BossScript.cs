@@ -7,6 +7,7 @@ public class BossScript : MonoBehaviour {
 	private WarriorController playerReference;
 	private Rigidbody2D m_rigidbody;
 	private SpriteRenderer m_spriteRenderer;
+	public AudioClip bossMusic;
 	
 	public float velocity = 5f;
 	public float dashVelocity = 50f;
@@ -145,6 +146,9 @@ public class BossScript : MonoBehaviour {
 
 	public void PlayerAttacked(int damage, float sign) {
 		if(!m_isActivated) {
+			if(bossMusic) {
+				SoundManager.instance.ChangeMusic(bossMusic);
+			}
 			Activate();
 		} else {
 			if(!m_isInvencible) {

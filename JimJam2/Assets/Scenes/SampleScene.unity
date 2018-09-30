@@ -71682,6 +71682,48 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 182893516}
   m_CullTransparentMesh: 0
+--- !u!1001 &240906498
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4092583201853762, guid: 91c322b6e7f9449e9b3cff12ccbc8195, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092583201853762, guid: 91c322b6e7f9449e9b3cff12ccbc8195, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092583201853762, guid: 91c322b6e7f9449e9b3cff12ccbc8195, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092583201853762, guid: 91c322b6e7f9449e9b3cff12ccbc8195, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092583201853762, guid: 91c322b6e7f9449e9b3cff12ccbc8195, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092583201853762, guid: 91c322b6e7f9449e9b3cff12ccbc8195, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092583201853762, guid: 91c322b6e7f9449e9b3cff12ccbc8195, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092583201853762, guid: 91c322b6e7f9449e9b3cff12ccbc8195, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 91c322b6e7f9449e9b3cff12ccbc8195, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &289078327
 GameObject:
   m_ObjectHideFlags: 0
@@ -72046,6 +72088,11 @@ Prefab:
       propertyPath: bottomScreenText
       value: 
       objectReference: {fileID: 972066758}
+    - target: {fileID: 114122119928684352, guid: 9ea31035499ab406383e28ef9cf7c9e8,
+        type: 2}
+      propertyPath: calmMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: d1b483d61721c47058e10200086486ec, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ea31035499ab406383e28ef9cf7c9e8, type: 2}
   m_IsPrefabAsset: 0
@@ -72157,7 +72204,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.7, y: -17.5, z: -10}
+  m_LocalPosition: {x: -4.1, y: 0.29999948, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1005233552}
@@ -72367,25 +72414,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 629745435}
   m_CullTransparentMesh: 0
---- !u!1 &693697338 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1613396622082872, guid: 04a9373ea273045eca6a249582689ecc,
-    type: 2}
-  m_PrefabInternal: {fileID: 1149630147}
---- !u!114 &693697339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 693697338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cee58211fa1184557be11fa7a6aec974, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: 5
-  dashVelocity: 50
-  dashLoadTime: 1
 --- !u!4 &693697340 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4922896379142176, guid: 04a9373ea273045eca6a249582689ecc,
@@ -73204,11 +73232,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4950530448488906, guid: 508322b741d3947d9b92fe74e3b4ec18, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 29.7
+      value: -4.1
       objectReference: {fileID: 0}
     - target: {fileID: 4950530448488906, guid: 508322b741d3947d9b92fe74e3b4ec18, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -19.5
+      value: -1.7
       objectReference: {fileID: 0}
     - target: {fileID: 4950530448488906, guid: 508322b741d3947d9b92fe74e3b4ec18, type: 2}
       propertyPath: m_LocalPosition.z

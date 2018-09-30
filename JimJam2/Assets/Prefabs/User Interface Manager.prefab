@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fa90ce19398741489cf1ce510aa979d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  calmMusic: {fileID: 8300000, guid: d57f49d14bf6f46a9ab704db8c63e44a, type: 3}
   lifePanel: {fileID: 0}
   hearts:
   - {fileID: 0}

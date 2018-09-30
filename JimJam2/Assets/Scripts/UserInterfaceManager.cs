@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class UserInterfaceManager : MonoBehaviour {
 
 	public static UserInterfaceManager instance;
+	public AudioClip calmMusic;
+	
 	[Header("Player Health")]
 	public GameObject lifePanel;
 	public Image[] hearts;
@@ -53,14 +54,16 @@ public class UserInterfaceManager : MonoBehaviour {
 	}
 
 	void ShowBottomScreenText() {
-		bottomScreenText.text = m_textQueue.Dequeue();
-		StartCoroutine(EndSentenceOnBottom());
+		if(m_textQueue.Count > 0) {
+			bottomScreenText.text = m_textQueue.Dequeue();
+			StartCoroutine(EndSentenceOnBottom());
+		}
 	}
 	
 	void Start () {
 		m_textQueue = new Queue<string>();
 		DisableAllPanels();
-		m_textQueue.Enqueue("Use the ARROW KEYS to move");
+		m_textQueue.Enqueue("Use A and D or the ARROW KEYS to move");
 		m_textQueue.Enqueue("Use SPACE to jump");
 		ShowBottomScreenText();
 	}
@@ -77,7 +80,8 @@ public class UserInterfaceManager : MonoBehaviour {
 				ShowBottomScreenText();
 
 				if(m_gameOver) {
-					// Load Final Scene
+					SoundManager.instance.ChangeMusic(calmMusic);
+					GameManagement.instance.LoadNextLevel();
 				} 
 			}
 		}
@@ -119,7 +123,7 @@ public class UserInterfaceManager : MonoBehaviour {
 		m_gameOver = true;
 		
 		// Imply That The Cycle Begins Again
-		
+
 	}
 
 	public void RenderHealth(int currentLife, int maxLife) {

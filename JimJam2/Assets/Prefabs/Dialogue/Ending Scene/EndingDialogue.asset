@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Name: EndingDialogue
   m_EditorClassIdentifier: 
   sentences:
-  - This is the End.
-  - 
+  - But the interesting thing is
+  - In order to recover all pieces, a Warrior must torn apart another Warrior.
+  - Leading to an endless cycle.

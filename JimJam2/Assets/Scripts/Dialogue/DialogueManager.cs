@@ -19,7 +19,7 @@ public class DialogueManager : MonoBehaviour {
 	void Awake() {
 		if (instance == null) {
 			instance = this;
-			DontDestroyOnLoad(gameObject);
+			// DontDestroyOnLoad(gameObject);
 		} else {
 			Destroy(gameObject);
 		}
@@ -95,6 +95,7 @@ public class DialogueManager : MonoBehaviour {
 			StartDialogue(m_dialogues.Dequeue());
 		} else {
 			dialoguePanel.SetActive(false);
+			GameManagement.instance.LoadNextLevel();
 		}
 	}
 }

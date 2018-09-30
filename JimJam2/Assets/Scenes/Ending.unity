@@ -161,6 +161,48 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 2012344548}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1001 &458126750
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4092583201853762, guid: 91c322b6e7f9449e9b3cff12ccbc8195, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092583201853762, guid: 91c322b6e7f9449e9b3cff12ccbc8195, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092583201853762, guid: 91c322b6e7f9449e9b3cff12ccbc8195, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092583201853762, guid: 91c322b6e7f9449e9b3cff12ccbc8195, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092583201853762, guid: 91c322b6e7f9449e9b3cff12ccbc8195, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092583201853762, guid: 91c322b6e7f9449e9b3cff12ccbc8195, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092583201853762, guid: 91c322b6e7f9449e9b3cff12ccbc8195, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092583201853762, guid: 91c322b6e7f9449e9b3cff12ccbc8195, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 91c322b6e7f9449e9b3cff12ccbc8195, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &895080832 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1832943687047088, guid: 82772d627472b4c7d8b7d4713eb4d4d5,
