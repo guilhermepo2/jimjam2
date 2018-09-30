@@ -71,4 +71,14 @@ public class UserInterfaceManager : MonoBehaviour {
 		m_textQueue.Enqueue("Jump while in midair to double jump");
 		Time.timeScale = 0;
 	}
+
+	public void ShowBottomText(string text) {
+		m_textQueue.Enqueue(text);
+		ShowBottomScreenText();
+	}
+
+	public void ShowCombat() {
+		m_textQueue.Enqueue("Use O to attack");
+		ShowBottomScreenText();
+	}
 }
